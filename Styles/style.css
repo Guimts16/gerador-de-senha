@@ -1,0 +1,269 @@
+:root{
+  --bg:#0f172a;
+  --panel:#1e293b;
+  --panel-2:#0f172a;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#38bdf8;
+  --accent-2:#0ea5e9;
+  --ok:#22c55e;
+  --ok-2:#16a34a;
+  --danger:#ef4444;
+  --border:#334155;
+}
+/* resetar inicial */
+*{box-sizing:border-box}
+
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  width:min(720px, 92vw);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+h1{
+  margin:8px 0 20px;
+  text-align:center;
+  font-size:1.8rem;
+  color:#f8fafc;
+}
+
+.logo{
+  display:block;
+  width:90px;height:90px;
+  border-radius:50%;
+  margin:0 auto 6px;
+  object-fit:cover;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:16px;
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+label{font-size:.9rem;color:#cbd5e1}
+
+input[type="number"]{
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+  color:var(--text);
+  font-size:1rem;
+  outline:none;
+}
+input[type="number"]:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.erro{
+  margin-top:8px;
+  color:var(--danger);
+  min-height:1.25em;
+  font-size:.95rem;
+}
+
+.resultado{
+  margin-top:18px;
+}
+
+.resultado-row{
+  margin-top:6px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+/* senha text input - mostramos o valor real, .blurred controla ocultação */
+#senha{
+  flex:1;
+  padding:12px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--panel-2);
+  color:var(--text);
+  font-size:1.05rem;
+  transition: filter .25s ease, box-shadow .18s ease;
+}
+
+/* aplica blur para ocultar visualmente a senha */
+.blurred {
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+  user-select: none;
+}
+
+#senha::selection { background: transparent; }
+
+.resultado-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.resultado-copy{
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+  font-weight:600;
+  cursor:pointer;
+  background:var(--ok);
+  color:#05260f;
+  transition: transform .12s ease, filter .12s ease;
+}
+.resultado-copy:hover{ transform: translateY(-2px); filter:brightness(.98) }
+
+button.secondary {
+  background:#0b1222;
+  color:#dbeafe;
+  border:1px solid var(--border);
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.btns{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
+}
+
+button{
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:1rem;
+}
+
+#btnGerar{
+  background:var(--accent);
+  color:#06223a;
+}
+#btnGerar:hover{background:var(--accent-2)}
+
+.secondary{
+  background:#0b1222;
+  color:#dbeafe;
+  border:1px solid var(--border);
+}
+.secondary:hover{filter:brightness(1.1)}
+
+#copiarResultado{
+  background:var(--ok);
+  color:#05260f;
+  border:none;
+}
+#copiarResultado:hover{background:var(--ok-2)}
+
+#toggleSenha{min-width:52px}
+
+.meter{
+  height:8px;
+  background:#0b1222;
+  border:1px solid var(--border);
+  border-radius:999px;
+  margin-top:10px;
+  overflow:hidden;
+}
+#meterBar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, #ef4444, #f59e0b, #22c55e, #3b82f6);
+  transition:width .25s ease;
+}
+.meter-label{margin-top:6px;color:var(--muted);font-size:.95rem}
+
+::placeholder{color:#64748b}
+
+.icon-btn{
+  display:inline-grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  color: var(--text);
+  padding:0;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  -webkit-tap-highlight-color: transparent;
+  position:relative;
+}
+
+.icon-btn:hover,
+.icon-btn:focus{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  outline: none;
+}
+
+.icon-btn svg{
+  width:22px;
+  height:22px;
+  display:block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* tooltip via data-title */
+.icon-btn[data-title]:hover::after,
+.icon-btn[data-title]:focus::after{
+  content: attr(data-title);
+  position: absolute;
+  top: -40px;
+  right: 50%;
+  transform: translateX(50%);
+  background: #0b1222;
+  color: var(--text);
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:0.82rem;
+  white-space:nowrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  pointer-events:none;
+  opacity: 0.98;
+  z-index: 100;
+}
+
+.sr-only{
+  position:absolute!important;
+  height:1px; width:1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  white-space:nowrap;
+}
+
+@media (max-width:420px){
+  .icon-btn{width:40px;height:40px}
+  .icon-btn svg{width:20px;height:20px}
+}

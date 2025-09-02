@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerador de Senha</title>
+  <link rel="stylesheet" href="./Styles/style.css" />
+</head>
+<body>
+  <div class="container">
+    <form id="formGerador" novalidate>
+      <img src="./Image/emoji.jpeg" alt="emoji" class="logo" />
+      <h1>🔐 Gerador de Senha</h1>
+
+      <div class="grid">
+        <div class="input-group">
+          <label for="qtdCaracteres">Qtd. de caracteres</label>
+          <input type="number" id="qtdCaracteres" min="4" max="128" value="12" required />
+        </div>
+
+        <div class="input-group">
+          <label for="qtdSimbolos">Símbolos</label>
+          <input type="number" id="qtdSimbolos" min="0" max="128" value="2" />
+        </div>
+
+        <div class="input-group">
+          <label for="qtdMaisculas">Maiúsculas</label>
+          <input type="number" id="qtdMaisculas" min="0" max="128" value="3" />
+        </div>
+
+        <div class="input-group">
+          <label for="qtdMinusculas">Minúsculas</label>
+          <input type="number" id="qtdMinusculas" min="0" max="128" value="3" />
+        </div>
+
+        <div class="input-group">
+          <label for="qtdNumeros">Números</label>
+          <input type="number" id="qtdNumeros" min="0" max="128" value="4" />
+        </div>
+      </div>
+
+      <div id="erro" class="erro" role="alert" aria-live="polite"></div>
+
+      <div class="resultado">
+        <label for="senha">Senha gerada</label>
+        <div class="resultado-row">
+          <input id="senha" type="text" readonly aria-live="polite" placeholder="— — —" class="blurred" />
+          <div class="resultado-actions">
+            <button
+              type="button"
+              id="toggleSenha"
+              class="icon-btn"
+              aria-pressed="true"
+              aria-label="Ocultar senha"
+              data-title="Ocultar senha"
+            >
+              <span class="sr-only">Ocultar/Mostrar senha</span>
+            </button>
+
+            <button type="button" id="copiarResultado" disabled class="resultado-copy">Copiar</button>
+          </div>
+        </div>
+
+        <div class="meter" aria-hidden="true"><div id="meterBar"></div></div>
+        <div id="forcaSenha" class="meter-label">Força da senha: —</div>
+      </div>
+
+      <div class="btns">
+        <button type="submit" id="btnGerar">Gerar senha</button>
+        <button type="button" id="btnLimpar" class="secondary">Limpar</button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="./JavaScript/index.js"></script>
+</body>
+</html>
